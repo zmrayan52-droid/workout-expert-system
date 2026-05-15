@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your personalized workout recommendation from the AI-powered Workout Expert System.">
+    <title>Your Workout Plan - Workout Expert System</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container result-page">
+        <!-- Result Header -->
+        <header class="result-header" id="result-header">
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+                <span class="hero-badge">Your Results</span>
+                <h1 class="hero-title">&#128293; Your Workout Plan</h1>
+                <p class="hero-subtitle">Based on your fitness profile, here's what we recommend</p>
+            </div>
+        </header>
+
+        <!-- Results Content -->
+        <div class="results-content" id="results-content">
+            <!-- Profile Summary -->
+            {{ profile_html | safe }}
+
+            <!-- Warnings (always appear above recommendations) -->
+            {% if warnings_html %}
+            <div class="warnings-section" id="warnings-section">
+                {{ warnings_html | safe }}
+            </div>
+            {% endif %}
+
+            <!-- Recommendations -->
+            <div class="recommendations-section" id="recommendations-section">
+                {{ recommendations_html | safe }}
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="back-section" id="back-section">
+            <a href="/" class="back-btn" id="back-btn">
+                <span class="btn-arrow">&larr;</span>
+                <span class="btn-text">Try Again</span>
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer" id="footer">
+            <p>Powered by <strong>Experta</strong> Expert System Engine</p>
+        </footer>
+    </div>
+</body>
+</html>

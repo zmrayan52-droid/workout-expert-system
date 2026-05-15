@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered workout recommendation system. Get personalized fitness plans based on your goals, fitness level, and health conditions.">
+    <title>Workout Expert System - Get Your Personalized Plan</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero" id="hero-section">
+            <div class="hero-glow"></div>
+            <div class="hero-content">
+                <span class="hero-badge">AI-Powered</span>
+                <h1 class="hero-title">&#128170; Workout Expert System</h1>
+                <p class="hero-subtitle">Get a personalized fitness plan tailored to your goals, level, and health conditions</p>
+            </div>
+        </header>
+
+        <!-- Form Section -->
+        <form action="/result" method="POST" id="workout-form" class="form-section">
+
+            <!-- Age Group -->
+            <div class="field-group" id="age-group">
+                <label class="field-label">&#127874; Age Group</label>
+                <div class="radio-cards">
+                    <label class="radio-card" id="age-young">
+                        <input type="radio" name="age" value="young" required>
+                        <div class="card-content">
+                            <span class="card-emoji">&#129415;</span>
+                            <span class="card-title">Young</span>
+                            <span class="card-desc">15 - 25 years</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="age-adult">
+                        <input type="radio" name="age" value="adult">
+                        <div class="card-content">
+                            <span class="card-emoji">&#128170;</span>
+                            <span class="card-title">Adult</span>
+                            <span class="card-desc">26 - 45 years</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="age-senior">
+                        <input type="radio" name="age" value="senior">
+                        <div class="card-content">
+                            <span class="card-emoji">&#129491;</span>
+                            <span class="card-title">Senior</span>
+                            <span class="card-desc">46+ years</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Goal -->
+            <div class="field-group" id="goal-group">
+                <label class="field-label">&#127919; Fitness Goal</label>
+                <div class="radio-cards">
+                    <label class="radio-card" id="goal-lose-weight">
+                        <input type="radio" name="goal" value="lose_weight" required>
+                        <div class="card-content">
+                            <span class="card-emoji">&#128293;</span>
+                            <span class="card-title">Lose Weight</span>
+                            <span class="card-desc">Burn fat & slim down</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="goal-build-muscle">
+                        <input type="radio" name="goal" value="build_muscle">
+                        <div class="card-content">
+                            <span class="card-emoji">&#127947;&#65039;</span>
+                            <span class="card-title">Build Muscle</span>
+                            <span class="card-desc">Gain strength & mass</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="goal-endurance">
+                        <input type="radio" name="goal" value="improve_endurance">
+                        <div class="card-content">
+                            <span class="card-emoji">&#127939;</span>
+                            <span class="card-title">Endurance</span>
+                            <span class="card-desc">Boost stamina & cardio</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="goal-stay-healthy">
+                        <input type="radio" name="goal" value="stay_healthy">
+                        <div class="card-content">
+                            <span class="card-emoji">&#128154;</span>
+                            <span class="card-title">Stay Healthy</span>
+                            <span class="card-desc">Overall wellness</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Fitness Level -->
+            <div class="field-group" id="level-group">
+                <label class="field-label">&#128200; Fitness Level</label>
+                <div class="radio-cards">
+                    <label class="radio-card" id="level-beginner">
+                        <input type="radio" name="level" value="beginner" required>
+                        <div class="card-content">
+                            <span class="card-emoji">&#127793;</span>
+                            <span class="card-title">Beginner</span>
+                            <span class="card-desc">Just starting out</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="level-intermediate">
+                        <input type="radio" name="level" value="intermediate">
+                        <div class="card-content">
+                            <span class="card-emoji">&#11088;</span>
+                            <span class="card-title">Intermediate</span>
+                            <span class="card-desc">Some experience</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="level-advanced">
+                        <input type="radio" name="level" value="advanced">
+                        <div class="card-content">
+                            <span class="card-emoji">&#128081;</span>
+                            <span class="card-title">Advanced</span>
+                            <span class="card-desc">Experienced athlete</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Availability -->
+            <div class="field-group" id="availability-group">
+                <label class="field-label">&#128197; Days per Week</label>
+                <div class="radio-cards">
+                    <label class="radio-card" id="avail-low">
+                        <input type="radio" name="available" value="low" required>
+                        <div class="card-content">
+                            <span class="card-emoji">&#128172;</span>
+                            <span class="card-title">Low</span>
+                            <span class="card-desc">1 - 2 days/week</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="avail-medium">
+                        <input type="radio" name="available" value="medium">
+                        <div class="card-content">
+                            <span class="card-emoji">&#9889;</span>
+                            <span class="card-title">Medium</span>
+                            <span class="card-desc">3 - 4 days/week</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="avail-high">
+                        <input type="radio" name="available" value="high">
+                        <div class="card-content">
+                            <span class="card-emoji">&#128293;</span>
+                            <span class="card-title">High</span>
+                            <span class="card-desc">5+ days/week</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Health Condition -->
+            <div class="field-group" id="condition-group">
+                <label class="field-label">&#127973; Health Condition</label>
+                <div class="radio-cards">
+                    <label class="radio-card" id="cond-healthy">
+                        <input type="radio" name="condition" value="healthy" required>
+                        <div class="card-content">
+                            <span class="card-emoji">&#9989;</span>
+                            <span class="card-title">Healthy</span>
+                            <span class="card-desc">No conditions</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="cond-joint-pain">
+                        <input type="radio" name="condition" value="joint_pain">
+                        <div class="card-content">
+                            <span class="card-emoji">&#129469;</span>
+                            <span class="card-title">Joint Pain</span>
+                            <span class="card-desc">Knee, back, etc.</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="cond-heart">
+                        <input type="radio" name="condition" value="heart_issue">
+                        <div class="card-content">
+                            <span class="card-emoji">&#10084;&#65039;</span>
+                            <span class="card-title">Heart Issue</span>
+                            <span class="card-desc">Cardiovascular</span>
+                        </div>
+                    </label>
+                    <label class="radio-card" id="cond-overweight">
+                        <input type="radio" name="condition" value="overweight">
+                        <div class="card-content">
+                            <span class="card-emoji">&#9878;&#65039;</span>
+                            <span class="card-title">Overweight</span>
+                            <span class="card-desc">Above ideal weight</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Validation Error -->
+            <div class="validation-error" id="validation-error" style="display: none;">
+                Please select an option for all fields before submitting.
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="submit-btn" id="submit-btn">
+                <span class="btn-text">Get My Plan</span>
+                <span class="btn-arrow">&rarr;</span>
+            </button>
+        </form>
+
+        <!-- Footer -->
+        <footer class="footer" id="footer">
+            <p>Powered by <strong>Experta</strong> Expert System Engine</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
